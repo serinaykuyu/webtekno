@@ -1,0 +1,76 @@
+ .hobi-img {
+    max-height: 150px;
+    object-fit: cover;
+}
+
+body {
+  background-color: rgb(255, 228, 247)"; /* Arka plan rengi */
+}
+
+.slider-wrapper {
+  max-width: 700px;
+  width: 100%;
+  margin-left: auto;       /* Sağa yasla */
+  margin-right: 30px;      /* Sağdan boşluk */
+  position: relative;      /* Oklar için referans */
+}
+
+.slider-container {
+  display: flex;
+  justify-content: flex-end; /* Slider'ı sağa yasla */
+}
+
+.carousel-inner {
+  margin-left: auto; /* Slider'ı sağa it */
+  width: 90%; /* Slider genişliğini biraz daralt (isteğe bağlı) */
+}
+
+.carousel {
+  width: 100%; /* Slider'ı container genişliğine göre ayarla */
+  margin: 0; /* Varsayılan margin'leri kaldır */
+}
+
+.c-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.carousel-control-prev {
+  left: 40px;
+  right: auto;
+}
+
+.carousel-control-next {
+  right: -30px;
+  left: auto;
+}
+
+/* İNDİKATÖRLER */
+.carousel-indicators {
+  position: absolute;
+  left: 11%;               /* Yatayda ortala */
+  margin: 7px;              /* Varsayılan margin'i sıfırla */
+  padding: 0;             /* Varsayılan padding'i sıfırla */
+  width: auto;            /* İçerik genişliğine göre ayarla */
+  display: flex;          /* Noktaları yan yana diz */
+}
+
+/* İNDİKATÖR NOKTALARI */
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white; /* Normal nokta rengi */
+  margin: 0 5px;          /* Noktalar arası boşluk */
+  border: none;
+}
+
+/* AKTİF (BASILI) İNDİKATÖR */
+.carousel-indicators [data-bs-target].active {
+  background-color: black; /* Aktif nokta siyah */
+}
+
+.c-item {
+  height: 400px;
+}
