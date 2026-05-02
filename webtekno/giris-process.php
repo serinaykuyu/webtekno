@@ -8,11 +8,11 @@ $dogru_kullanici = "b241210030@sakarya.edu.tr";
 $dogru_sifre = "b241210030";
 
 // Formdan gelen verileri al
-$kullanici = $_POST['email'] ?? '';
-$sifre = $_POST['password'] ?? '';
+$kullanici = $_POST['userName'];
+$sifre = $_POST['password'];
 
 // Kontrol
-if ($kullanici === $dogru_kullanici && $sifre === $dogru_sifre) {
+if ($kullanici == $sifre) {
     echo "<h2 style='text-align:center; margin-top:50px;'>Hoşgeldiniz, $sifre </h2>";
     //buraya index.html'e geri dönme yolu ekle
 } else {

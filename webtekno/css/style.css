@@ -3,9 +3,13 @@
     object-fit: cover;
 }
 
-body {
-  background-color: rgb(255, 228, 247)"; /* Arka plan rengi */
-}
+body{
+  background-color: rgb(254, 234, 253) !important; /* Arka plan rengi */
+  }
+
+.c-bosluk {
+  margin-left: 35px;
+} 
 
 .slider-wrapper {
   max-width: 700px;
