@@ -3,10 +3,6 @@ header('Content-Type: text/html; charset=utf-8');
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Sabit kullanıcı bilgisi (örnek)
-$dogru_kullanici = "b241210030@sakarya.edu.tr";
-$dogru_sifre = "b241210030";
-
 // Formdan gelen verileri al
 $kullanici = $_POST['userName'];
 $sifre = $_POST['password'];
@@ -16,7 +12,13 @@ if ($kullanici == $sifre) {
     echo "<h2 style='text-align:center; margin-top:50px;'>Hoşgeldiniz, $sifre </h2>";
     //buraya index.html'e geri dönme yolu ekle
 } else {
-    header("Location: giris.html");
-    exit();
+    echo "<h2 style='text-align:center; margin-top:50px;'>Kullanıcı adı veya şifreniz hatalı, lütfen tekrar deneyiniz.</h2>";
+
+    // 3 saniye sonra giriş sayfasına yönlendirir
+    echo "<script>
+        setTimeout(function() {
+            window.location.href = 'giris.html';
+        }, 3000);
+    </script>";
 }
 ?>

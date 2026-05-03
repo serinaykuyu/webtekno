@@ -1,9 +1,8 @@
 function validateForm() {
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
 
-  if (email === "" || password === "") {
-    alert("Kullanıcı adı ve şifre boş bırakılamaz.");
+  if (!email.includes("@sakarya.edu.tr")) {
+    alert("E-posta adresinizi doğru girip girmediğinizi kontrol ediniz.");
     return false;
   }
 
