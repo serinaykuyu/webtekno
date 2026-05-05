@@ -11,6 +11,10 @@ body{
   margin-left: 35px;
 } 
 
+.c-color {
+  background-color: white !important; /* Arka plan rengi */
+}
+
 .slider-wrapper {
   max-width: 700px;
   width: 100%;
@@ -25,13 +29,13 @@ body{
 }
 
 .carousel-inner {
-  margin-left: auto; /* Slider'ı sağa it */
-  width: 90%; /* Slider genişliğini biraz daralt (isteğe bağlı) */
+  margin-left: auto;  /* Slider'ı sağa it */
+  width: 90%;        /* Slider genişliğini biraz daralt (isteğe bağlı) */
 }
 
 .carousel {
-  width: 100%; /* Slider'ı container genişliğine göre ayarla */
-  margin: 0; /* Varsayılan margin'leri kaldır */
+  width: 100%;   /* Slider'ı container genişliğine göre ayarla */
+  margin: 0;    /* Varsayılan margin'leri kaldır */
 }
 
 .c-img {
@@ -54,10 +58,10 @@ body{
 .carousel-indicators {
   position: absolute;
   left: 11%;               /* Yatayda ortala */
-  margin: 7px;              /* Varsayılan margin'i sıfırla */
-  padding: 0;             /* Varsayılan padding'i sıfırla */
-  width: auto;            /* İçerik genişliğine göre ayarla */
-  display: flex;          /* Noktaları yan yana diz */
+  margin: 7px;             /* Varsayılan margin'i sıfırla */
+  padding: 0;              /* Varsayılan padding'i sıfırla */
+  width: auto;             /* İçerik genişliğine göre ayarla */
+  display: flex;           /* Noktaları yan yana diz */
 }
 
 /* İNDİKATÖR NOKTALARI */

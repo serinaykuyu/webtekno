@@ -47,17 +47,19 @@
         <div class="card shadow p-4">
           <h3 class="text-center mb-4">Giriş Yap</h3>
             <form action="giris-process.php" method="POST" onsubmit="return validateForm();">
-              <div class="mb-3">
-                <label for="email" class="form-label">Kullanıcı Adı (Email)</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="**********@sakarya.edu.tr" required>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Şifre</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="öğrenci numaranız" required>
-              </div>
 
-  <!-- GİZLİ INPUT -->
-              <input type="hidden" id="userName" name="userName"> <!--bunun ne olduğunu iyice öğrennn-->
+            <div class="mb-3">
+              <label for="email" class="form-label">Kullanıcı Adı (Email)</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="**********@sakarya.edu.tr" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Şifre</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="öğrenci numaranız" required>
+            </div>
+
+            <!-- GİZLİ INPUT -->
+            <input type="hidden" id="userName" name="userName"> <!--bunun ne olduğunu iyice öğrennn-->
 
               <button type="submit" class="btn btn-primary w-100" style="background-color: darkmagenta">Giriş Yap</button>
             </form>
