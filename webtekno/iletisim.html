@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" style="color:rgb(255, 228, 247)" href="ilgi-alanlarım.html">İlgi Alanlarım</a>
+            <a class="nav-link active" style="color:rgb(255, 228, 247)" href="ilgi-alanlarim.html">İlgi Alanlarım</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color:rgb(255, 228, 247)" href="cv.html">CV</a>
@@ -44,8 +44,133 @@
     </div>
   </nav>
 
+  <div id="app" class="container my-5">
+  <!-- novalidate özelliğini ekledik, böylece tarayıcının kendi hata mesajları çıkmaz, bizim JS'imiz çalışır -->
+  <form id="iletisimForm" ref="formElement" class="iletisim-form" method="POST" action="form-process.php" enctype="multipart/form-data" @submit.prevent="submitWithVue" novalidate>
+      <h3 class="text-center mb-4">İletişim Formu</h3>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+      <div class="row g-3">
+      <!-- Ad Soyad -->
+      <div class="col-md-6">
+        <label for="adSoyad" class="form-label">Ad Soyad</label>
+        <input type="text" class="form-control" id="adSoyad" name="adSoyad" v-model="formData.adSoyad" required>
+      </div>
+
+      <!-- E-posta -->
+      <div class="col-md-6">
+        <label for="email" class="form-label">E-posta</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="**********@sakarya.edu.tr" v-model="formData.email" required>
+      </div>
+
+      <!-- Parola -->
+      <div class="col-md-6">
+        <label for="parola" class="form-label">Parola</label>
+        <input type="password" class="form-control" id="parola" name="parola" v-model="formData.parola" required>
+      </div>
+
+      <!-- Yaş -->
+      <div class="col-md-6">
+        <label for="yas" class="form-label">Yaşınızı Giriniz</label>
+        <input type="number" class="form-control" id="yas" name="yas" placeholder="Yaşınızı giriniz" v-model="formData.yas">
+      </div>
+
+      <!-- Telefon -->
+      <div class="col-md-6">
+        <label for="telefon" class="form-label">Telefon</label>
+        <input type="tel" class="form-control" id="telefon" name="telefon" placeholder="05** *** ** **" v-model="formData.telefon" required>
+      </div>
+
+      <!-- Doğum Tarihi -->
+      <div class="col-md-6">
+        <label for="tarih" class="form-label">Doğum Tarihinizi Giriniz</label>
+        <input type="date" class="form-control" id="tarih" name="tarih" v-model="formData.tarih">
+      </div>
+
+      <!-- Kısa Bilgilendirme -->
+      <div class="col-12">
+        <label for="bilgilendirme" class="form-label">Kısa Bilgilendirme</label>
+        <textarea class="form-control" id="bilgilendirme" name="bilgilendirme" rows="3" placeholder="Kısa bir bilgilendirme yazınız..." v-model="formData.bilgilendirme"></textarea>
+      </div>
+
+      <!-- Memnuniyet -->
+      <div class="col-md-6">
+        <label for="memnuniyet" class="form-label">Memnuniyetinizi Değerlendiriniz</label>
+        <input type="range" class="form-range" id="memnuniyet" name="memnuniyet" min="0" max="100" step="20" v-model="formData.memnuniyet">
+      </div>
+
+      <!-- Renk Teması -->
+      <div class="col-md-6">
+        <label for="renk" class="form-label">Bir Renk Teması Seçseniz Hangi Rengi Seçerdiniz</label>
+        <input type="color" class="form-control form-control-color" id="renk" name="renk" v-model="formData.renk" title="Renk Seçiniz">
+      </div>
+
+      <!-- Konu Seçimi -->
+      <div class="col-md-6">
+        <label for="konuSecimi" class="form-label">Konu Seçimi</label>
+        <select class="form-select" id="konuSecimi" name="konuSecimi" v-model="formData.konuSecimi">
+          <option value="genel">Genel Bilgi</option>
+          <option value="destek">Teknik Destek</option>
+          <option value="oneri">Öneri</option>
+          <option value="sikayet">Şikayet</option>
+        </select>
+      </div>
+
+      <!-- Cinsiyet (radio) -->
+      <div class="col-md-6">
+        <label class="form-label d-block">Cinsiyet</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="cinsiyet" id="erkek" value="erkek" v-model="formData.cinsiyet">
+          <label class="form-check-label" for="erkek">Erkek</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="cinsiyet" id="kadin" value="kadin" v-model="formData.cinsiyet">
+          <label class="form-check-label" for="kadin">Kadın</label>
+        </div>
+      </div>
+
+      <!-- İlgi Alanları (checkbox) -->
+      <div class="col-12">
+        <label class="form-label d-block">İlgi Alanları</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="gezi" value="gezi" v-model="formData.ilgiler">
+          <label class="form-check-label" for="gezi">Gezi</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="fotograf" value="fotoğraf" v-model="formData.ilgiler">
+          <label class="form-check-label" for="fotograf">Fotoğraf</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="spor" value="spor" v-model="formData.ilgiler">
+          <label class="form-check-label" for="spor">Spor</label>
+        </div>
+      </div>
+
+      <!-- Dosya Yükleme -->
+      <div class="col-md-6">
+        <label for="dosya" class="form-label">İletmek İstediğiniz Dosyayı Yükleyiniz</label>
+        <input type="file" class="form-control" id="dosya" name="dosya" @change="onFileChange">
+      </div>
+
+      <!-- Uygun Saat -->
+      <div class="col-md-6">
+        <label for="saat" class="form-label">Uygun OLduğunuz Saati Seçiniz</label>
+        <input type="time" class="form-control" id="saat" name="saat" v-model="formData.saat">
+      </div>
+    </div>
+
+      <!-- Butonlar -->
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button type="button" id="js-submit" class="btn btn-secondary" onclick="submitWithJS()">JS ile Gönder</button>
+        
+        <button type="submit" class="btn btn-primary">Vue ile Gönder</button>
+        
+        <button type="button" id="temizle" @click="temizleForm" class="btn btn-danger">Temizle</button>
+    </div>
+</form>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="js/formjs.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
